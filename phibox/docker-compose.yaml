@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  cyphernode_welcome:
+    image: nkitzke/phiboxapp:0.0.1
+    volumes:
+      - "$GATEKEEPER_DATAPATH/certs/cert.pem:/data/cert.pem"
+      - "$GATEKEEPER_DATAPATH/keys.properties:/data/keys.properties"
+      - "$GATEKEEPER_DATAPATH/htpasswd:/htpasswd/htpasswd"
+    networks:
+      - cyphernodeappsnet
+    restart: always
+    labels:
+      - "traefik.docker.network=cyphernodeappsnet"
+      - "traefik.frontend.rule=PathPrefixStrip:/phibox"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.frontend.auth.basic.usersFile=/htpasswd/htpasswd"
+networks:
+  cyphernodeappsnet:
+    external: true
