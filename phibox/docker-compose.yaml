@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  phibox_welcome:
+  phibox:
     image: nkitzke/phiboxapp:0.0.1
     volumes:
       - "$GATEKEEPER_DATAPATH/certs/cert.pem:/data/cert.pem"
