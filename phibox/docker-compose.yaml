@@ -4,8 +4,6 @@ services:
   phibox:
     image: nkitzke/phiboxapp:0.0.3
     volumes:
-      - "$GATEKEEPER_DATAPATH/certs/cert.pem:/data/cert.pem"
-      - "$GATEKEEPER_DATAPATH/keys.properties:/data/keys.properties"
       - "$GATEKEEPER_DATAPATH/htpasswd:/htpasswd/htpasswd"
     networks:
       - cyphernodeappsnet
