@@ -2,7 +2,7 @@ version: "3"
 
 services:
   veto:
-    image: nkitzke/vetoapp-x86:0.0.1
+    image: nkitzke/vetoapp-x86:0.0.2
     volumes:
       - "$GATEKEEPER_DATAPATH/htpasswd:/htpasswd/htpasswd"
     networks:
