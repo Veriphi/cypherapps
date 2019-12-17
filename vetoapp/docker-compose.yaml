@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  veto:
+    image: nkitzke/vetoapp-x86:0.0.1
+    volumes:
+      - "$GATEKEEPER_DATAPATH/htpasswd:/htpasswd/htpasswd"
+    networks:
+      - cyphernodeappsnet
+    restart: always
+    labels:
+      - "traefik.docker.network=cyphernodeappsnet"
+      - "traefik.frontend.rule=PathPrefixStrip:/veto"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.frontend.auth.basic.usersFile=/htpasswd/htpasswd"
+networks:
+  cyphernodeappsnet:
+    external: true
