@@ -2,7 +2,7 @@ version: "3"
 
 services:
   veto:
-    image: nkitzke/vetoapp-x86:0.0.2
+    image: nkitzke/vetoapp-x86:0.0.3
     volumes:
       - "$GATEKEEPER_DATAPATH/htpasswd:/htpasswd/htpasswd"
     networks:
@@ -13,7 +13,7 @@ services:
       - "traefik.frontend.rule=PathPrefixStrip:/veto"
       - "traefik.frontend.passHostHeader=true"
       - "traefik.enable=true"
-      - "traefik.port=80"
+      - "traefik.port=3000"
       - "traefik.frontend.auth.basic.usersFile=/htpasswd/htpasswd"
 networks:
   cyphernodeappsnet:
